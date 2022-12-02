@@ -21,14 +21,15 @@
                  [GLFWvidmode* vm (glfwGetVideoMode mon)]
                  [GLFWwindow* w (glfwCreateWindow ($@ vm -> #:width)
                                                   ($@ vm -> #:height)
+                                                  ;; window name
                                                   ($v "RMOS")
-                                                  ;; XXX This makes it
-                                                  ;; full-screen
-                                                  $NULL ;;mon
+                                                  ;; $NULL - window
+                                                  ;; mon - full-screen
+                                                  $NULL
                                                   $NULL)])
                 ($do (glfwSetInputMode w GLFW_CURSOR GLFW_CURSOR_NORMAL))
                 ($do (glfwMakeContextCurrent w))
-                ;; XXX This enables vsync
+                ;; This enables vsync
                 ($do (glfwSwapInterval ($v S32 1)))
 
                 ;; XXX Set up the drawing
